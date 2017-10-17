@@ -1,18 +1,18 @@
 function cell(i,j)
 {
-	this.Xno=i;
-	this.Yno=j;
-	this.onoff=(random(1)>0.5);
-	this.col=color(0,0,int(random(9))*32);
+  this.Xno=i;
+  this.Yno=j;
+  this.onoff=(random(1)>0.5);
+  this.col=color(0,0,int(random(9))*32);
 }
 cell.prototype.setting=function()
 {
-	this.col=color(0,0,int(random(9))*32);
-  this.onoff=(random(1)>0.5);
+  this.col=color(0,0,int(random(9))*32);
+  this.onoff=(random(1)>0.5)&&(this.col!=color(0));
 }
 cell.prototype.draw=function()
 {
-	if(this.onoff)
+  if(this.onoff)
   {
     fill(this.col);
     switch(mode)
@@ -41,7 +41,7 @@ function setup()
   for(var i=0;i<max_;i++)
   {
     c[i]=new Array(max_)
-		for(var j=0;j<max_;j++)
+    for(var j=0;j<max_;j++)
     {
       c[i][j]=new cell(i,j);
     }
